@@ -32,17 +32,20 @@ const loginValidationSchema = yup.object().shape({
 });
 
 export default function LoginScreen(props) {
+  const andPlt = Platform.OS === 'android' ? true : false
   return (
     <KeyboardAvoidingView
-    behavior={Platform.OS === 'ios' ? 'height' : 'padding'}
+    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
         backgroundColor: "white",
+        paddingTop: andPlt ? 25 : 0
       }}
     >
-      <ScrollView bounces="false" contentContainerStyle={{flex:1}}>
+      <ScrollView  bounces='false' contentContainerStyle={{flex:1, 
+       alignItems: "center",
+        justifyContent: "center",
+       paddingTop: andPlt ? 25 : 0}}>
       <Text style={styles.signInText}>Please Sign In</Text>
       <Text style={styles.signInPar}>Sign in to manage your account.</Text>
       <Formik

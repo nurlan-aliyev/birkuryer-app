@@ -29,17 +29,19 @@ const loginValidationSchema = yup.object().shape({
 });
 
 export default function RegisterScreen(props) {
+  const andPlt = Platform.OS === 'android' ? true : false
   return (
     <KeyboardAvoidingView 
-    behavior={Platform.OS === 'ios' ? 'height' : 'padding'}
+    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
         backgroundColor: "#FFF",
+        paddingTop: andPlt ? 25 : 0
       }}
     >
-      <ScrollView bounces="false" contentContainerStyle={{flex:1}}>
+      <ScrollView bounces="false" contentContainerStyle={{flex:1,   alignItems: "center",
+        justifyContent: "center",
+        paddingTop: andPlt ? 25 : 0}}>
       <Text style={styles.signInText}>Please Sign up</Text>
       <Text style={styles.signInPar}>Fill out the form to get started.</Text>
       <Formik
@@ -162,7 +164,7 @@ export default function RegisterScreen(props) {
               onPress={handleSubmit}
               disabled={!isValid}
             >
-              <Text style={styles.btnText}>Sign In</Text>
+              <Text style={styles.btnText}>Sign Up</Text>
             </TouchableOpacity>
             <View style={{ flexDirection: "row", marginTop: 8 }}>
               <Text style={styles.signInPar}>Have an account?</Text>
